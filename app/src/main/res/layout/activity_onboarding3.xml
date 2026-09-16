@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8FAFC">
+
+    <!-- Top Bar -->
+    <View
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:background="#E8EEF7"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Illustration Circle -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/illustrationCard"
+        android:layout_width="320dp"
+        android:layout_height="320dp"
+        android:layout_marginTop="55dp"
+        app:cardBackgroundColor="#EEF3F9"
+        app:cardCornerRadius="160dp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topBar">
+
+        <ImageView
+            android:id="@+id/onboardingImage"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_gravity="center"
+            android:contentDescription="Plan your government office visit"
+            android:src="@drawable/onboarding_visit" />
+
+    </androidx.cardview.widget.CardView>
+
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/onboardingTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="25dp"
+        android:gravity="center"
+        android:text="Plan Your Visit"
+        android:textColor="#17233D"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/illustrationCard" />
+
+
+    <!-- Description -->
+    <TextView
+        android:id="@+id/onboardingDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="45dp"
+        android:gravity="center"
+        android:lineSpacingExtra="4dp"
+        android:text="Know what to expect before visiting a government office."
+        android:textColor="#71819D"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/onboardingTitle" />
+
+
+    <!-- Page Indicators -->
+    <LinearLayout
+        android:id="@+id/pageIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/onboardingDescription">
+
+        <!-- Page 1 -->
+        <View
+            android:layout_width="7dp"
+            android:layout_height="7dp"
+            android:background="#D2DCE9" />
+
+        <!-- Page 2 -->
+        <View
+            android:layout_width="7dp"
+            android:layout_height="7dp"
+            android:layout_marginStart="7dp"
+            android:background="#D2DCE9" />
+
+        <!-- Page 3 - Active -->
+        <View
+            android:layout_width="30dp"
+            android:layout_height="7dp"
+            android:layout_marginStart="7dp"
+            android:background="#0B3D91" />
+
+    </LinearLayout>
+
+
+    <!-- Get Started Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnGetStarted"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:text="Get Started"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:backgroundTint="#0B3D91"
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
