@@ -15,8 +15,28 @@ class SplashActivity : AppCompatActivity() {
 
         Handler(Looper.getMainLooper()).postDelayed({
 
-            val intent = Intent(this, OnboardingActivity::class.java)
-            startActivity(intent)
+            val sharedPreferences = getSharedPreferences(
+                "GovQueuePrefs",
+                MODE_PRIVATE
+            )
+
+            val isLoggedIn = sharedPreferences.getBoolean(
+                "isLoggedIn",
+                false
+            )
+
+            if (isLoggedIn) {
+
+                startActivity(
+                    Intent(this, MainActivity::class.java)
+                )
+
+            } else {
+
+                startActivity(
+                    Intent(this, OnboardingActivity::class.java)
+                )
+            }
 
             finish()
 

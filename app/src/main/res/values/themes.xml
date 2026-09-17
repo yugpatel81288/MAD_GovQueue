@@ -6,4 +6,22 @@
     </style>
 
     <style name="Theme.MADGovQueue" parent="Base.Theme.MADGovQueue" />
+
+    <!-- Custom GovQueue Styles -->
+    <style name="GovCardView" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardBackgroundColor">@color/white</item>
+        <item name="cardCornerRadius">12dp</item>
+        <item name="cardElevation">2dp</item>
+        <item name="android:layout_margin">4dp</item>
+    </style>
+
+    <style name="GovOutlinedButton" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="strokeColor">@color/gov_primary</item>
+        <item name="android:textColor">@color/gov_primary</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.GovQueue.Button</item>
+    </style>
+
+    <style name="ShapeAppearance.GovQueue.Button" parent="">
+        <item name="cornerSize">8dp</item>
+    </style>
 </resources>

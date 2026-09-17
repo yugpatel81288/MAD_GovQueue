@@ -12,6 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MADGovQueue">
+        <activity android:name=".ReportCrowdActivity" />
+        <activity android:name=".OfficeDetailsActivity" />
 
         <!-- Splash Screen -->
         <activity

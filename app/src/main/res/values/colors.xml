@@ -1,5 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Government Theme Palette -->
+    <color name="gov_primary">#0B3D91</color>
+    <color name="gov_primary_dark">#082D6C</color>
+    <color name="gov_secondary">#163A5F</color>
+    <color name="gov_background">#F5F7FA</color>
+    <color name="gov_surface">#FFFFFF</color>
+    <color name="gov_card">#FFFFFF</color>
+
+    <!-- Typography Colors -->
+    <color name="gov_text_primary">#1F2937</color>
+    <color name="gov_text_secondary">#667085</color>
+    <color name="gov_text_tertiary">#9CA3AF</color>
+    <color name="gov_text_on_primary">#FFFFFF</color>
+
+    <!-- UI Accents & Dividers -->
+    <color name="gov_border">#E2E8F0</color>
+    <color name="gov_divider">#E5E7EB</color>
+    <color name="gov_input_bg">#FFFFFF</color>
+
+    <!-- Crowd Status Colors (Text, Icon, Badge Background) -->
+    <!-- Low Crowd -->
+    <color name="crowd_low">#18864B</color>
+    <color name="crowd_low_bg">#E8F5E9</color>
+    <color name="crowd_low_border">#A5D6A7</color>
+
+    <!-- Moderate Crowd -->
+    <color name="crowd_moderate">#D88A00</color>
+    <color name="crowd_moderate_bg">#FFF8E1</color>
+    <color name="crowd_moderate_border">#FFE082</color>
+
+    <!-- High Crowd -->
+    <color name="crowd_high">#C62828</color>
+    <color name="crowd_high_bg">#FFEBEE</color>
+    <color name="crowd_high_border">#FFCDD2</color>
+
+    <!-- Standard Colors -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <color name="transparent">#00000000</color>
 </resources>

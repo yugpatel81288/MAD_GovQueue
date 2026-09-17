@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">MAD GovQueue</string>
+
+    <!-- Home Screen -->
+    <string name="default_location">New Delhi, India</string>
+    <string name="hint_search_home">Search departments or services&#8230;</string>
+    <string name="heading_nearby_offices">Nearby Government Offices</string>
+    <string name="btn_view_details">View Details</string>
 </resources>

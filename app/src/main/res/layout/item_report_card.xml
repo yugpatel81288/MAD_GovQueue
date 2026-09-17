@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    android:backgroundTint="@color/gov_surface"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Office Name -->
+
+        <TextView
+            android:id="@+id/tvReportOfficeName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-bold"
+            android:text="Regional Passport Office"
+            android:textColor="@color/gov_text_primary"
+            android:textSize="17sp" />
+
+
+        <!-- Crowd Status -->
+
+        <TextView
+            android:id="@+id/tvReportCrowd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Moderate Crowd"
+            android:textColor="@color/crowd_moderate"
+            android:textSize="15sp" />
+
+
+        <!-- People Waiting -->
+
+        <TextView
+            android:id="@+id/tvReportPeople"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="People waiting: 25"
+            android:textColor="@color/gov_text_secondary"
+            android:textSize="14sp" />
+
+
+        <!-- Divider -->
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="12dp"
+            android:background="@color/gov_border" />
+
+
+        <!-- Time -->
+
+        <TextView
+            android:id="@+id/tvReportTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Reported: 17 Sep 2026, 10:30 PM"
+            android:textColor="@color/gov_text_secondary"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
