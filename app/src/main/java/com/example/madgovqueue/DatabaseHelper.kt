@@ -199,4 +199,37 @@ class DatabaseHelper(context: Context) :
 
         return reports
     }
+    fun getUserDetails(
+        email: String
+    ): Pair<String, String>? {
+
+        val db = readableDatabase
+
+        val cursor = db.rawQuery(
+            "SELECT name, email FROM users WHERE email = ?",
+            arrayOf(email)
+        )
+
+        var userDetails: Pair<String, String>? = null
+
+        if (cursor.moveToFirst()) {
+
+            val name =
+                cursor.getString(
+                    cursor.getColumnIndexOrThrow("name")
+                )
+
+            val userEmail =
+                cursor.getString(
+                    cursor.getColumnIndexOrThrow("email")
+                )
+
+            userDetails =
+                Pair(name, userEmail)
+        }
+
+        cursor.close()
+
+        return userDetails
+    }
 }

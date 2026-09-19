@@ -3,7 +3,6 @@ package com.example.madgovqueue
 import android.content.Intent
 import android.os.Bundle
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
@@ -14,12 +13,16 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_login)
 
         databaseHelper = DatabaseHelper(this)
 
-        val etEmail = findViewById<EditText>(R.id.etEmail)
-        val etPassword = findViewById<EditText>(R.id.etPassword)
+        val etEmail =
+            findViewById<EditText>(R.id.etEmail)
+
+        val etPassword =
+            findViewById<EditText>(R.id.etPassword)
 
         val btnSignIn =
             findViewById<MaterialButton>(R.id.btnSignIn)
@@ -27,36 +30,51 @@ class LoginActivity : AppCompatActivity() {
         val btnCreateAccount =
             findViewById<MaterialButton>(R.id.btnCreateAccount)
 
+
         // Sign In
         btnSignIn.setOnClickListener {
 
-            val email = etEmail.text.toString().trim()
-            val password = etPassword.text.toString()
+            val email =
+                etEmail.text.toString().trim()
 
-            if (email.isEmpty() || password.isEmpty()) {
+            val password =
+                etPassword.text.toString().trim()
 
-                Toast.makeText(
-                    this,
-                    "Please enter email and password",
-                    Toast.LENGTH_SHORT
-                ).show()
 
+            if (email.isEmpty()) {
+                etEmail.error = "Enter your email"
+                etEmail.requestFocus()
                 return@setOnClickListener
             }
 
+
+            if (password.isEmpty()) {
+                etPassword.error = "Enter your password"
+                etPassword.requestFocus()
+                return@setOnClickListener
+            }
+
+
             val loginSuccessful =
-                databaseHelper.loginUser(email, password)
+                databaseHelper.loginUser(
+                    email,
+                    password
+                )
+
 
             if (loginSuccessful) {
 
-                val sharedPreferences = getSharedPreferences(
-                    "GovQueuePrefs",
-                    MODE_PRIVATE
-                )
+                val prefs =
+                    getSharedPreferences(
+                        "GovQueuePrefs",
+                        MODE_PRIVATE
+                    )
 
-                sharedPreferences.edit()
+                prefs.edit()
                     .putBoolean("isLoggedIn", true)
+                    .putString("userEmail", email)
                     .apply()
+
 
                 Toast.makeText(
                     this,
@@ -64,13 +82,21 @@ class LoginActivity : AppCompatActivity() {
                     Toast.LENGTH_SHORT
                 ).show()
 
-                val intent = Intent(
-                    this,
-                    MainActivity::class.java
-                )
+
+                val intent =
+                    Intent(
+                        this,
+                        MainActivity::class.java
+                    )
+
+                intent.flags =
+                    Intent.FLAG_ACTIVITY_NEW_TASK or
+                            Intent.FLAG_ACTIVITY_CLEAR_TASK
 
                 startActivity(intent)
+
                 finish()
+
             } else {
 
                 Toast.makeText(
@@ -81,13 +107,15 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
+
         // Create Account
         btnCreateAccount.setOnClickListener {
 
-            val intent = Intent(
-                this,
-                RegisterActivity::class.java
-            )
+            val intent =
+                Intent(
+                    this,
+                    RegisterActivity::class.java
+                )
 
             startActivity(intent)
         }
