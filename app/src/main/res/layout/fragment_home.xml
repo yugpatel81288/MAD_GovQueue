@@ -3,8 +3,6 @@
 <androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/gov_background"
@@ -14,106 +12,91 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingStart="16dp"
-        android:paddingTop="20dp"
-        android:paddingEnd="16dp"
         android:paddingBottom="24dp">
 
         <!-- Header -->
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:paddingStart="20dp"
+            android:paddingTop="20dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="16dp">
+
+            <ImageView
+                android:id="@+id/ivHomeLogo"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_govqueue_logo"
+                android:contentDescription="@string/app_name" />
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_marginStart="12dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tvHeaderTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-bold"
                     android:text="Gov Queue"
                     android:textColor="@color/gov_text_primary"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/tvLocationBadge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:contentDescription="Location"
-                        android:src="@drawable/ic_location"
-                        app:tint="@color/gov_text_secondary" />
-
-                    <TextView
-                        android:id="@+id/tvLocationBadge"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:text="@string/default_location"
-                        android:textColor="@color/gov_text_secondary"
-                        android:textSize="13sp" />
-
-                </LinearLayout>
+                    android:layout_marginTop="3dp"
+                    android:text="Ahmedabad, Gujarat"
+                    android:textColor="@color/gov_text_secondary"
+                    android:textSize="13sp" />
 
             </LinearLayout>
 
-            <ImageView
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:contentDescription="GovQueue Logo"
-                android:src="@drawable/ic_govqueue_logo" />
-
         </LinearLayout>
 
-
         <!-- Search -->
-
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/searchCardHome"
-            style="@style/GovCardView"
             android:layout_width="match_parent"
-            android:layout_height="54dp"
-            android:layout_marginTop="20dp">
+            android:layout_height="56dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:cardBackgroundColor="@color/gov_surface"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="1dp"
+            app:strokeColor="@color/gov_border"
+            app:strokeWidth="1dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:orientation="horizontal"
                 android:paddingStart="16dp"
-                android:paddingEnd="12dp">
+                android:paddingEnd="16dp">
 
                 <ImageView
                     android:layout_width="22dp"
                     android:layout_height="22dp"
-                    android:contentDescription="Search"
-                    android:src="@drawable/ic_search"
-                    app:tint="@color/gov_text_secondary" />
+                    android:src="@android:drawable/ic_menu_search"
+                    android:contentDescription="@string/search"
+                    android:tint="@android:color/darker_gray" />
 
                 <EditText
                     android:id="@+id/etSearchHome"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="10dp"
                     android:layout_weight="1"
+                    android:layout_marginStart="10dp"
                     android:background="@android:color/transparent"
-                    android:hint="Search government offices or services"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:padding="0dp"
+                    android:hint="Search government offices..."
+                    android:singleLine="true"
                     android:textColor="@color/gov_text_primary"
                     android:textColorHint="@color/gov_text_secondary"
                     android:textSize="14sp" />
@@ -122,24 +105,24 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-
-        <!-- Nearby Offices Header -->
-
+        <!-- Nearby header -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:paddingStart="20dp"
+            android:paddingTop="26dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="12dp">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="sans-serif-bold"
-                android:text="@string/heading_nearby_offices"
+                android:text="Nearby Government Offices"
                 android:textColor="@color/gov_text_primary"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvViewAllOffices"
@@ -148,34 +131,33 @@
                 android:text="View All"
                 android:textColor="@color/gov_primary"
                 android:textSize="14sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="6dp" />
 
         </LinearLayout>
 
-
-        <!-- Offices -->
-
+        <!-- Office list -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvNearbyOffices"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
             android:nestedScrollingEnabled="false"
-            tools:listitem="@layout/item_office_card" />
+            android:clipToPadding="false"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp" />
 
-
-        <!-- No Search Results -->
-
+        <!-- No results -->
         <TextView
             android:id="@+id/tvNoHomeResults"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:padding="24dp"
+            android:layout_margin="24dp"
             android:gravity="center"
-            android:text="No offices found\nTry searching for another office or service."
+            android:text="No government offices found"
             android:textColor="@color/gov_text_secondary"
-            android:textSize="15sp"
+            android:textSize="14sp"
             android:visibility="gone" />
 
     </LinearLayout>

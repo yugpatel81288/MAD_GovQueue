@@ -10,7 +10,6 @@ class DatabaseHelper(context: Context) :
 
     override fun onCreate(db: SQLiteDatabase) {
 
-        // Users table
         db.execSQL(
             """
             CREATE TABLE users (
@@ -22,7 +21,6 @@ class DatabaseHelper(context: Context) :
             """.trimIndent()
         )
 
-        // Crowd reports table
         db.execSQL(
             """
             CREATE TABLE reports (
@@ -58,7 +56,10 @@ class DatabaseHelper(context: Context) :
         }
     }
 
-    // Register user
+    // ================================
+    // REGISTER USER
+    // ================================
+
     fun registerUser(
         name: String,
         email: String,
@@ -89,7 +90,10 @@ class DatabaseHelper(context: Context) :
         }
     }
 
-    // Login user
+    // ================================
+    // LOGIN USER
+    // ================================
+
     fun loginUser(
         email: String,
         password: String
@@ -102,14 +106,80 @@ class DatabaseHelper(context: Context) :
             arrayOf(email, password)
         )
 
-        val loginSuccessful = cursor.count > 0
+        val success = cursor.count > 0
 
         cursor.close()
 
-        return loginSuccessful
+        return success
     }
 
-    // Save crowd report
+    // ================================
+    // RESET PASSWORD
+    // ================================
+
+    fun resetPassword(
+        email: String,
+        newPassword: String
+    ): Boolean {
+
+        val db = writableDatabase
+
+        val values = ContentValues().apply {
+            put("password", newPassword)
+        }
+
+        val rowsUpdated = db.update(
+            "users",
+            values,
+            "email = ?",
+            arrayOf(email)
+        )
+
+        return rowsUpdated > 0
+    }
+
+    // ================================
+    // GET USER DETAILS
+    // ================================
+
+    fun getUserDetails(
+        email: String
+    ): Pair<String, String>? {
+
+        val db = readableDatabase
+
+        val cursor = db.rawQuery(
+            "SELECT name, email FROM users WHERE email = ?",
+            arrayOf(email)
+        )
+
+        var userDetails: Pair<String, String>? = null
+
+        if (cursor.moveToFirst()) {
+
+            val name = cursor.getString(
+                cursor.getColumnIndexOrThrow("name")
+            )
+
+            val userEmail = cursor.getString(
+                cursor.getColumnIndexOrThrow("email")
+            )
+
+            userDetails = Pair(
+                name,
+                userEmail
+            )
+        }
+
+        cursor.close()
+
+        return userDetails
+    }
+
+    // ================================
+    // ADD CROWD REPORT
+    // ================================
+
     fun addCrowdReport(
         officeName: String,
         crowdStatus: String,
@@ -121,9 +191,7 @@ class DatabaseHelper(context: Context) :
         val values = ContentValues().apply {
 
             put("office_name", officeName)
-
             put("crowd_status", crowdStatus)
-
             put("people_waiting", peopleWaiting)
 
             put(
@@ -141,7 +209,10 @@ class DatabaseHelper(context: Context) :
         return result != -1L
     }
 
-    // Get all crowd reports
+    // ================================
+    // GET ALL REPORTS
+    // ================================
+
     fun getAllReports(): ArrayList<Report> {
 
         val reports = ArrayList<Report>()
@@ -157,38 +228,33 @@ class DatabaseHelper(context: Context) :
 
             do {
 
-                val id =
-                    cursor.getInt(
-                        cursor.getColumnIndexOrThrow("id")
-                    )
+                val id = cursor.getInt(
+                    cursor.getColumnIndexOrThrow("id")
+                )
 
-                val officeName =
-                    cursor.getString(
-                        cursor.getColumnIndexOrThrow("office_name")
-                    )
+                val officeName = cursor.getString(
+                    cursor.getColumnIndexOrThrow("office_name")
+                )
 
-                val crowdStatus =
-                    cursor.getString(
-                        cursor.getColumnIndexOrThrow("crowd_status")
-                    )
+                val crowdStatus = cursor.getString(
+                    cursor.getColumnIndexOrThrow("crowd_status")
+                )
 
-                val peopleWaiting =
-                    cursor.getString(
-                        cursor.getColumnIndexOrThrow("people_waiting")
-                    )
+                val peopleWaiting = cursor.getString(
+                    cursor.getColumnIndexOrThrow("people_waiting")
+                )
 
-                val reportTime =
-                    cursor.getString(
-                        cursor.getColumnIndexOrThrow("report_time")
-                    )
+                val reportTime = cursor.getString(
+                    cursor.getColumnIndexOrThrow("report_time")
+                )
 
                 reports.add(
                     Report(
-                        id = id,
-                        officeName = officeName,
-                        crowdStatus = crowdStatus,
-                        peopleWaiting = peopleWaiting,
-                        reportTime = reportTime
+                        id,
+                        officeName,
+                        crowdStatus,
+                        peopleWaiting,
+                        reportTime
                     )
                 )
 
@@ -199,37 +265,63 @@ class DatabaseHelper(context: Context) :
 
         return reports
     }
-    fun getUserDetails(
-        email: String
-    ): Pair<String, String>? {
+
+    // ================================
+    // GET LATEST REPORT FOR OFFICE
+    // ================================
+
+    fun getLatestReportForOffice(
+        officeName: String
+    ): Report? {
 
         val db = readableDatabase
 
         val cursor = db.rawQuery(
-            "SELECT name, email FROM users WHERE email = ?",
-            arrayOf(email)
+            """
+            SELECT *
+            FROM reports
+            WHERE office_name = ?
+            ORDER BY id DESC
+            LIMIT 1
+            """.trimIndent(),
+            arrayOf(officeName)
         )
 
-        var userDetails: Pair<String, String>? = null
+        var report: Report? = null
 
         if (cursor.moveToFirst()) {
 
-            val name =
-                cursor.getString(
-                    cursor.getColumnIndexOrThrow("name")
-                )
+            val id = cursor.getInt(
+                cursor.getColumnIndexOrThrow("id")
+            )
 
-            val userEmail =
-                cursor.getString(
-                    cursor.getColumnIndexOrThrow("email")
-                )
+            val name = cursor.getString(
+                cursor.getColumnIndexOrThrow("office_name")
+            )
 
-            userDetails =
-                Pair(name, userEmail)
+            val crowd = cursor.getString(
+                cursor.getColumnIndexOrThrow("crowd_status")
+            )
+
+            val people = cursor.getString(
+                cursor.getColumnIndexOrThrow("people_waiting")
+            )
+
+            val time = cursor.getString(
+                cursor.getColumnIndexOrThrow("report_time")
+            )
+
+            report = Report(
+                id,
+                name,
+                crowd,
+                people,
+                time
+            )
         }
 
         cursor.close()
 
-        return userDetails
+        return report
     }
 }

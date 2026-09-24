@@ -3,12 +3,12 @@
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    style="@style/GovCardView"
+
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="12dp"
-    android:backgroundTint="@color/gov_surface"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="2dp">
+    android:layout_marginBottom="12dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,31 +25,56 @@
             android:fontFamily="sans-serif-bold"
             android:text="Regional Passport Office"
             android:textColor="@color/gov_text_primary"
-            android:textSize="17sp" />
+            android:textSize="17sp"
+            android:maxLines="2"
+            android:ellipsize="end" />
 
 
-        <!-- Crowd Status -->
+        <!-- Crowd Status Badge -->
 
-        <TextView
-            android:id="@+id/tvReportCrowd"
+        <LinearLayout
+            android:id="@+id/badgeReportCrowd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:fontFamily="sans-serif-medium"
-            android:text="Moderate Crowd"
-            android:textColor="@color/crowd_moderate"
-            android:textSize="15sp" />
+            android:background="@drawable/bg_badge_low"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="10dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="5dp">
+
+            <ImageView
+                android:id="@+id/ivReportCrowdDot"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:contentDescription="Crowd status"
+                android:src="@drawable/ic_crowd_low" />
+
+            <TextView
+                android:id="@+id/tvReportCrowd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="7dp"
+                android:fontFamily="sans-serif-bold"
+                android:letterSpacing="0.03"
+                android:text="LOW CROWD"
+                android:textColor="@color/crowd_low"
+                android:textSize="12sp" />
+
+        </LinearLayout>
 
 
         <!-- People Waiting -->
 
         <TextView
             android:id="@+id/tvReportPeople"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:text="People waiting: 25"
-            android:textColor="@color/gov_text_secondary"
+            android:layout_marginTop="14dp"
+            android:text="People waiting: 12"
+            android:textColor="@color/gov_text_primary"
             android:textSize="14sp" />
 
 
@@ -59,18 +84,18 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="12dp"
-            android:background="@color/gov_border" />
+            android:background="@color/gov_divider" />
 
 
-        <!-- Time -->
+        <!-- Report Time -->
 
         <TextView
             android:id="@+id/tvReportTime"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Reported: 17 Sep 2026, 10:30 PM"
-            android:textColor="@color/gov_text_secondary"
+            android:text="Reported: 24 Sep 2026, 08:35 PM"
+            android:textColor="@color/gov_text_tertiary"
             android:textSize="12sp" />
 
     </LinearLayout>

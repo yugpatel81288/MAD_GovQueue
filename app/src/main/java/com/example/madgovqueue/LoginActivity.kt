@@ -3,6 +3,7 @@ package com.example.madgovqueue
 import android.content.Intent
 import android.os.Bundle
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
@@ -12,6 +13,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var databaseHelper: DatabaseHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_login)
@@ -30,8 +32,14 @@ class LoginActivity : AppCompatActivity() {
         val btnCreateAccount =
             findViewById<MaterialButton>(R.id.btnCreateAccount)
 
+        val tvForgotPassword =
+            findViewById<TextView>(R.id.tvForgotPassword)
 
+
+        // --------------------------------
         // Sign In
+        // --------------------------------
+
         btnSignIn.setOnClickListener {
 
             val email =
@@ -40,27 +48,31 @@ class LoginActivity : AppCompatActivity() {
             val password =
                 etPassword.text.toString().trim()
 
-
             if (email.isEmpty()) {
-                etEmail.error = "Enter your email"
+
+                etEmail.error =
+                    "Enter your email"
+
                 etEmail.requestFocus()
+
                 return@setOnClickListener
             }
-
 
             if (password.isEmpty()) {
-                etPassword.error = "Enter your password"
+
+                etPassword.error =
+                    "Enter your password"
+
                 etPassword.requestFocus()
+
                 return@setOnClickListener
             }
-
 
             val loginSuccessful =
                 databaseHelper.loginUser(
                     email,
                     password
                 )
-
 
             if (loginSuccessful) {
 
@@ -71,17 +83,21 @@ class LoginActivity : AppCompatActivity() {
                     )
 
                 prefs.edit()
-                    .putBoolean("isLoggedIn", true)
-                    .putString("userEmail", email)
+                    .putBoolean(
+                        "isLoggedIn",
+                        true
+                    )
+                    .putString(
+                        "userEmail",
+                        email
+                    )
                     .apply()
-
 
                 Toast.makeText(
                     this,
                     "Login successful",
                     Toast.LENGTH_SHORT
                 ).show()
-
 
                 val intent =
                     Intent(
@@ -108,16 +124,33 @@ class LoginActivity : AppCompatActivity() {
         }
 
 
+        // --------------------------------
         // Create Account
+        // --------------------------------
+
         btnCreateAccount.setOnClickListener {
 
-            val intent =
+            startActivity(
                 Intent(
                     this,
                     RegisterActivity::class.java
                 )
+            )
+        }
 
-            startActivity(intent)
+
+        // --------------------------------
+        // Forgot Password
+        // --------------------------------
+
+        tvForgotPassword.setOnClickListener {
+
+            startActivity(
+                Intent(
+                    this,
+                    ForgotPasswordActivity::class.java
+                )
+            )
         }
     }
 }

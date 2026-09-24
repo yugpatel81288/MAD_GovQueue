@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeFragment : Fragment() {
 
@@ -97,6 +98,9 @@ class HomeFragment : Fragment() {
         tvNoHomeResults =
             view.findViewById(R.id.tvNoHomeResults)
 
+        val tvViewAllOffices =
+            view.findViewById<TextView>(R.id.tvViewAllOffices)
+
         recyclerView.layoutManager =
             LinearLayoutManager(requireContext())
 
@@ -105,6 +109,19 @@ class HomeFragment : Fragment() {
 
         // Setup search
         setupSearch()
+
+        // View All Offices
+        tvViewAllOffices.setOnClickListener {
+
+            val bottomNavigation =
+                requireActivity()
+                    .findViewById<BottomNavigationView>(
+                        R.id.bottomNavigation
+                    )
+
+            bottomNavigation.selectedItemId =
+                R.id.nav_offices
+        }
     }
 
     private fun setupAdapter(offices: List<Office>) {
@@ -163,7 +180,6 @@ class HomeFragment : Fragment() {
                     count: Int,
                     after: Int
                 ) {
-                    // Not required
                 }
 
                 override fun onTextChanged(
@@ -182,7 +198,6 @@ class HomeFragment : Fragment() {
                 override fun afterTextChanged(
                     s: Editable?
                 ) {
-                    // Not required
                 }
             }
         )
@@ -190,7 +205,6 @@ class HomeFragment : Fragment() {
 
     private fun filterOffices(query: String) {
 
-        // Empty search
         if (query.isEmpty()) {
 
             recyclerView.visibility =
@@ -204,7 +218,6 @@ class HomeFragment : Fragment() {
             return
         }
 
-        // Filter offices
         val filteredOffices =
             allOffices.filter { office ->
 
@@ -224,7 +237,6 @@ class HomeFragment : Fragment() {
                         )
             }
 
-        // No results
         if (filteredOffices.isEmpty()) {
 
             recyclerView.visibility =
@@ -235,7 +247,6 @@ class HomeFragment : Fragment() {
 
         } else {
 
-            // Results found
             recyclerView.visibility =
                 View.VISIBLE
 

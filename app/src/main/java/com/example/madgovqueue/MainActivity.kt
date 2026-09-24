@@ -16,19 +16,13 @@ class MainActivity : AppCompatActivity() {
 
         bottomNavigation = findViewById(R.id.bottomNavigation)
 
-        // Open Home when app starts
+        // Open Home by default
         if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(
-                    R.id.navHostFragment,
-                    HomeFragment()
-                )
-                .commit()
-
+            openFragment(HomeFragment())
             bottomNavigation.selectedItemId = R.id.nav_home
         }
 
-        // Bottom navigation
+        // Bottom Navigation
         bottomNavigation.setOnItemSelectedListener { item ->
 
             when (item.itemId) {
@@ -61,10 +55,15 @@ class MainActivity : AppCompatActivity() {
     private fun openFragment(fragment: Fragment) {
 
         supportFragmentManager.beginTransaction()
-            .replace(
-                R.id.navHostFragment,
-                fragment
-            )
+            .replace(R.id.navHostFragment, fragment)
             .commit()
+    }
+
+    fun switchToOfficesTab() {
+        bottomNavigation.selectedItemId = R.id.nav_offices
+    }
+
+    fun switchToReportsTab() {
+        bottomNavigation.selectedItemId = R.id.nav_reports
     }
 }

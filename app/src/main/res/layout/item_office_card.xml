@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
     style="@style/GovCardView"
+
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="12dp">
@@ -13,84 +17,86 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Top row: Office Name & Service -->
+        <!-- Office Name -->
         <TextView
             android:id="@+id/tvOfficeName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-bold"
+            android:fontFamily="sans-serif"
             android:textColor="@color/gov_text_primary"
             android:textSize="17sp"
+            android:textStyle="bold"
             tools:text="Regional Passport Office" />
 
+        <!-- Service -->
         <TextView
             android:id="@+id/tvOfficeService"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="4dp"
             android:fontFamily="sans-serif"
             android:textColor="@color/gov_secondary"
-            android:textSize="14sp"
+            android:textSize="13sp"
             tools:text="Passport Services" />
 
-        <!-- Location row -->
+        <!-- Location -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="10dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="14dp"
-                android:layout_height="14dp"
-                android:contentDescription="Location"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:contentDescription="@string/location"
                 android:src="@drawable/ic_location" />
 
             <TextView
                 android:id="@+id/tvOfficeLocation"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
                 android:fontFamily="sans-serif"
                 android:textColor="@color/gov_text_secondary"
                 android:textSize="13sp"
                 tools:text="Ahmedabad, Gujarat" />
+
         </LinearLayout>
 
         <!-- Divider -->
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="12dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="14dp"
             android:background="@color/gov_divider" />
 
-        <!-- Bottom row: Crowd status badge & View Details Button -->
+        <!-- Bottom Action Row -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <!-- Crowd Badge -->
+            <!-- Crowd Status -->
             <LinearLayout
                 android:id="@+id/badgeCrowdStatus"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="34dp"
                 android:background="@drawable/bg_badge_low"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingStart="8dp"
-                android:paddingTop="4dp"
-                android:paddingEnd="10dp"
-                android:paddingBottom="4dp">
+                android:paddingStart="9dp"
+                android:paddingEnd="10dp">
 
                 <ImageView
                     android:id="@+id/ivCrowdDot"
                     android:layout_width="12dp"
                     android:layout_height="12dp"
-                    android:contentDescription="Status"
+                    android:contentDescription="@string/crowd_status"
                     android:src="@drawable/ic_crowd_low" />
 
                 <TextView
@@ -100,28 +106,34 @@
                     android:layout_marginStart="6dp"
                     android:fontFamily="sans-serif-medium"
                     android:textColor="@color/crowd_low"
-                    android:textSize="13sp"
+                    android:textSize="12sp"
                     tools:text="Low Crowd • 15 min wait" />
+
             </LinearLayout>
 
-            <View
+            <!-- Spacer -->
+            <Space
                 android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:layout_weight="1" />
 
-            <!-- View Details Action -->
+            <!-- View Details -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnViewDetails"
-                style="@style/GovOutlinedButton"
                 android:layout_width="wrap_content"
-                android:layout_height="38dp"
-                android:minHeight="38dp"
-                android:paddingStart="12dp"
-                android:paddingTop="0dp"
-                android:paddingEnd="12dp"
-                android:paddingBottom="0dp"
+                android:layout_height="40dp"
+                android:minWidth="0dp"
+                android:minHeight="40dp"
                 android:text="@string/btn_view_details"
-                android:textSize="13sp" />
+                android:textAllCaps="false"
+                android:textColor="@color/gov_primary"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                app:backgroundTint="@android:color/transparent"
+                app:cornerRadius="10dp"
+                app:strokeColor="@color/gov_primary"
+                app:strokeWidth="1dp" />
+
         </LinearLayout>
 
     </LinearLayout>

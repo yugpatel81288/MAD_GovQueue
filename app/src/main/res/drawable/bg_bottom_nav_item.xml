@@ -4,23 +4,27 @@
 
     <item android:state_checked="true">
 
-        <shape android:shape="rectangle">
+        <inset
+            android:insetLeft="18dp"
+            android:insetRight="18dp"
+            android:insetTop="7dp"
+            android:insetBottom="7dp">
 
-            <solid android:color="#EEE7FF" />
+            <shape>
 
-            <corners android:radius="30dp" />
+                <solid android:color="#E9E7FF" />
 
-        </shape>
+                <corners android:radius="22dp" />
+
+            </shape>
+
+        </inset>
 
     </item>
 
     <item>
 
-        <shape android:shape="rectangle">
-
-            <solid android:color="@android:color/transparent" />
-
-        </shape>
+        <color android:color="@android:color/transparent" />
 
     </item>
 
