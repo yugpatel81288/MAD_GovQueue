@@ -6,4 +6,13 @@
     <string name="hint_search_home">Search departments or services&#8230;</string>
     <string name="heading_nearby_offices">Nearby Government Offices</string>
     <string name="btn_view_details">View Details</string>
+    <string name="section_office_info">Office Information</string>
+    <string name="label_address">Address</string>
+    <string name="label_opening_hours">Opening Hours</string>
+    <string name="section_current_crowd">Current Crowd</string>
+    <string name="label_estimated_wait">Estimated Wait</string>
+    <string name="section_queue">Queue</string>
+    <string name="label_people_waiting">People Waiting</string>
+    <string name="btn_get_directions">Get Directions</string>
+    <string name="btn_report_crowd">Report Crowd</string>
 </resources>
