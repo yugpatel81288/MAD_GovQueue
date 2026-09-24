@@ -27,15 +27,24 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
-        android:layout_height="64dp"
+        android:layout_height="72dp"
         android:background="@color/gov_surface"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+
         app:elevation="4dp"
-        app:itemIconSize="22dp"
+        app:itemBackground="@drawable/bg_bottom_nav_item"
+        app:itemIconSize="23dp"
         app:itemIconTint="@color/gov_primary"
-        app:itemRippleColor="@color/gov_background"
         app:itemTextColor="@color/gov_primary"
+        app:itemRippleColor="@android:color/transparent"
+        app:itemHorizontalTranslationEnabled="false"
+
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:menu="@menu/bottom_nav_menu" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

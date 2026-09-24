@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -20,6 +22,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -34,7 +37,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-bold"
-                    android:text="@string/app_name"
+                    android:text="Gov Queue"
                     android:textColor="@color/gov_primary"
                     android:textSize="24sp" />
 
@@ -61,7 +64,9 @@
                         android:text="@string/default_location"
                         android:textColor="@color/gov_text_secondary"
                         android:textSize="13sp" />
+
                 </LinearLayout>
+
             </LinearLayout>
 
             <!-- Subtle Brand Icon -->
@@ -70,7 +75,9 @@
                 android:layout_height="38dp"
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_govqueue_logo" />
+
         </LinearLayout>
+
 
         <!-- Search Bar -->
         <com.google.android.material.card.MaterialCardView
@@ -107,8 +114,11 @@
                     android:textColor="@color/gov_text_primary"
                     android:textColorHint="@color/gov_text_tertiary"
                     android:textSize="14sp" />
+
             </LinearLayout>
+
         </com.google.android.material.card.MaterialCardView>
+
 
         <!-- Main Section Header -->
         <LinearLayout
@@ -136,7 +146,9 @@
                 android:text="View All"
                 android:textColor="@color/gov_primary"
                 android:textSize="14sp" />
+
         </LinearLayout>
+
 
         <!-- Nearby Offices List -->
         <androidx.recyclerview.widget.RecyclerView
