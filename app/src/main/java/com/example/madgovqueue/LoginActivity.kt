@@ -123,11 +123,6 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-
-        // --------------------------------
-        // Create Account
-        // --------------------------------
-
         btnCreateAccount.setOnClickListener {
 
             startActivity(
@@ -137,11 +132,6 @@ class LoginActivity : AppCompatActivity() {
                 )
             )
         }
-
-
-        // --------------------------------
-        // Forgot Password
-        // --------------------------------
 
         tvForgotPassword.setOnClickListener {
 
